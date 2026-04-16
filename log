@@ -2,3 +2,30 @@ Thu Apr 16 08:04:41 PM UTC 2026:
  tests:  0|7
 total_score: 0/60
 ce4b97b
+Thu Apr 16 08:32:43 PM UTC 2026: 
+ hashmap.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:62:16: error: too few arguments to function ‘hash’
+   62 |     long pos = hash(key) % map->capacity;
+      |                ^~~~
+hashmap.c:28:6: note: declared here
+   28 | long hash( char * key, long capacity) {
+      |      ^~~~
+hashmap.c:63:62: error: ‘map->buckets’ is a pointer to pointer; did you mean to dereference it before applying ‘->’ to it?
+   63 |     while (map->buckets[pos] != NULL && is_equal(map->buckets->key, key) == 0) {
+      |                                                              ^~
+      |                                                  (*          )
+hashmap.c:66:22: error: ‘i’ undeclared (first use in this function)
+   66 |     if (map->buckets[i] == NULL) {
+      |                      ^
+hashmap.c:66:22: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:68:12: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   68 |         map->hashArray[pos] = newPair;
+      |            ^~
+hashmap.c:72:12: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   72 |         map->hashArray[pos]->value = value;
+      |            ^~
+5cf54a5
