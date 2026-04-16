@@ -29,3 +29,26 @@ hashmap.c:72:12: error: ‘HashMap’ {aka ‘struct HashMap’} has no member n
    72 |         map->hashArray[pos]->value = value;
       |            ^~
 5cf54a5
+Thu Apr 16 08:33:00 PM UTC 2026: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:62:16: error: too few arguments to function ‘hash’
+   62 |     long pos = hash(key) % map->capacity;
+      |                ^~~~
+hashmap.c:28:6: note: declared here
+   28 | long hash( char * key, long capacity) {
+      |      ^~~~
+hashmap.c:63:62: error: ‘map->buckets’ is a pointer to pointer; did you mean to dereference it before applying ‘->’ to it?
+   63 |     while (map->buckets[pos] != NULL && is_equal(map->buckets->key, key) == 0) {
+      |                                                              ^~
+      |                                                  (*          )
+hashmap.c:68:12: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   68 |         map->hashArray[pos] = newPair;
+      |            ^~
+hashmap.c:72:12: error: ‘HashMap’ {aka ‘struct HashMap’} has no member named ‘hashArray’
+   72 |         map->hashArray[pos]->value = value;
+      |            ^~
+9436123
