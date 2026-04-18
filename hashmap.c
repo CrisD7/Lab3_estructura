@@ -131,10 +131,11 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-    long pos = map->current;
-    if (map->buckets[pos] == NULL) return NULL;
+    if (map == NULL || map->buckets == NULL) {
+        return NULL;
+    }
 
-    for (pos ; pos < map->capacity ; pos++) {
+    for (long pos = map->current + 1; pos < map->capacity ; pos++) {  
         if (map->buckets[pos] != NULL) {
             map->current = pos;
             return map->buckets[pos];
