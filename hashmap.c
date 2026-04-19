@@ -160,11 +160,21 @@ void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
     
     Pair** old_buckets = map->buckets;
-    HashMap * newMap = createMap(map->capacity * 2);
+    long old_capacity = map->capacity;
+    
+    HashMap * newMap = createMap(old_capacity * 2);
 
-    for (long i = 0 ; i < map->capacity ; i++) {
-        insertMap(newMap, old_buckets[i]->key, old_buckets[i]->value);
+    for (long i = 0 ; i < old_capacity ; i++) {
+        if (old_buckets[i] != NULL && old_buckets[i]->key != NULL) {
+            insertMap(newMap, old_buckets[i]->key, old_buckets[i]->value);
+        }
     }
+
+    map->capacity = newMap->capacity;
+    map->buckets = newMap->buckets;
+
+    free(newMap);
+    free(old_buckets);
 }
 
 
