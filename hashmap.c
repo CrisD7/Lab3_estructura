@@ -158,8 +158,13 @@ Pair * nextMap(HashMap * map) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+    
+    Pair** old_buckets = map->buckets;
+    hashMap * newMap = createMap(map->capacity * 2);
 
-
+    for (long i = 0 ; i < map->capacity ; i++) {
+        insertMap(newMap->buckets, old_buckets[i]->key, old_buckets[i]->value);
+    }
 }
 
 
