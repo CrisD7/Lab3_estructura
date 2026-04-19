@@ -210,3 +210,18 @@ hashmap.c:166:25: error: request for member ‘buckets’ in something not a str
   166 |         insertMap(newMap->buckets, old_buckets[i]->key, old_buckets[i]->value);
       |                         ^~
 1e8a3f8
+Sun Apr 19 08:07:01 PM UTC 2026: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:166:25: error: passing argument 1 of ‘insertMap’ from incompatible pointer type [-Wincompatible-pointer-types]
+  166 |         insertMap(newMap->buckets, old_buckets[i]->key, old_buckets[i]->value);
+      |                   ~~~~~~^~~~~~~~~
+      |                         |
+      |                         Pair **
+hashmap.c:67:26: note: expected ‘HashMap *’ {aka ‘struct HashMap *’} but argument is of type ‘Pair **’
+   67 | void insertMap(HashMap * map, char * key, void * value) {
+      |                ~~~~~~~~~~^~~
+a7cb7d0
