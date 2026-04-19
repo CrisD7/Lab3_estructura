@@ -163,7 +163,7 @@ void enlarge(HashMap * map) {
     HashMap * newMap = createMap(map->capacity * 2);
 
     for (long i = 0 ; i < map->capacity ; i++) {
-        insertMap(newMap->buckets, old_buckets[i]->key, old_buckets[i]->value);
+        insertMap(newMap, old_buckets[i]->key, old_buckets[i]->value);
     }
 }
 
